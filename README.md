@@ -29,6 +29,18 @@ Some prompts to answer:
 
 You can include a simple diagram or bullet list if helpful.
 
+--- Below is the simple flow chart of how the program is processing:
+Input (User Prefs) → Process (Recommender: Using the Algorithm recipe) → Output (The Ranking of Songs: Top K Recommendations).
+
+The Algorithm Recipe is that it first calculates the score based on the intensity & genre which computes energy. But since this will only recommend songs based on score computed, it may not consider user's taste. Hence bpm is also taken in consideration to have better results which aligns with the user's taste as well.
+
+genre, mood, energy, tempo_bpm, valence, acousticness and danceability are the features in the song but only energy & tempo_bpm are combined in the score.
+
+UserProfile takes favorite_genre, favorite_mood, target_energy, target_bpm, and likes_acoustic, accounting for both taste and score.
+
+Recommender compute the score based on the intensity score (energy and tempo) and genre/mood, which generates a weighted sum that ranks the songs.
+
+
 ---
 
 ## Getting Started
@@ -53,6 +65,8 @@ pip install -r requirements.txt
 ```bash
 python -m src.main
 ```
+![alt text](image.png)
+![alt text](image-1.png)
 
 ### Running Tests
 
