@@ -2,6 +2,7 @@ import csv
 from typing import List, Dict, Tuple
 from dataclasses import dataclass
 
+MODEL_NAME = "BeatHive 1.0"
 MAX_BPM = 160.0
 
 
@@ -141,6 +142,7 @@ def _score_song_dict(song: Dict, user_prefs: Dict) -> Tuple[float, List[str]]:
     total += acoustic_pts
     reasons.append(f"acousticness match (+{acoustic_pts})")
 
+    # Valence — numerical, max 1.0
     valence_pts = round(1.0 * (1.0 - abs(0.7 - song["valence"])), 2)
     total += valence_pts
     reasons.append(f"valence match (+{valence_pts})")
